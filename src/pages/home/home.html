@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Waar is mijn fiets?
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-image: url('assets/nfc.png')">
+  <h3 class="text-center">Scan een NFC tag</h3>
+  <ion-list>
+    <ion-item *ngFor="let item of locations$ | async">{{item.Lat}},{{item.Lon}}</ion-item>
+  </ion-list>
+  <button ion-button full (click)="saveLocation()">GPS ophalen</button>
+  <button ion-button full [navPush]="mapPage">Laatste locatie</button>
+</ion-content>
+
+<ion-footer>
+  <ion-item [navPush]="mapPage" primary>Laatste locatie</ion-item>
+</ion-footer>
